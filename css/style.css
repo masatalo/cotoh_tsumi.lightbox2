@@ -1,0 +1,699 @@
+@charset "UTF-8";
+
+html {
+  margin: 0;
+  padding:0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", sans-serif;
+  font-weight: 500;
+  color: #444;
+  line-height: 2.0;
+  letter-spacing: 0.1em;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  display: none; /*一旦非表示→fade-in*/
+}
+*,*:before,*:after {
+  -webkit-box-sizing: border-box;/*paddingとborderを幅と高さに含める*/
+  box-sizing: border-box; /*paddingとborderを幅と高さに含める*/
+}
+h2,h3,h4,h5 {
+  margin: 0;
+  padding: 0;
+}
+img {
+  width: 100%;
+  vertical-align: middle; 
+}
+figure {
+  margin: 0;
+  
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ul,li,dl,dt,dd {
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+a { 
+  text-decoration: none;
+  transition: all .6s ease; /*全てのプロパティ・変化までの時間・開始と終了時緩やかに*/
+}
+a:hover { 
+  transition:all .6s ease;
+}
+section {
+  margin-bottom: 120px;
+}
+.content-wrapper {
+   width: 100%; /*修正前95*/
+   margin: 0 auto;
+   max-width: 1400px; /*これ以上大きくならない*/
+ }
+section h2 {
+  font-size: 2rem;
+}
+/*== header start == */
+.inner { /** ヘッダー部全体 **/
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 6vw;
+  height: 100%;
+  writing-mode: vertical-lr; /* 縦書き */
+  margin: 0;
+}
+.inner:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+/* header */
+#top-head {
+  width: 100%;
+  width: 4.5vw;
+  line-height: 1; 
+  position: absolute;
+  position: fixed;
+  z-index:1;/*修正前999*/
+}
+#top-head a,
+#top-head {
+  color: #fff;
+  text-decoration: none;
+}
+#top-head .inner {
+  position: relative;
+}
+#top-head .logo { /* 古塔つみ */
+  display: inline-block;
+  font-size: 1.5vw;
+  width: 4vw;
+  color: #555555;
+  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.75em;
+}
+#mobile-head {
+  width: 4vw;
+  vertical-align: middle;
+  margin-top: 20px;
+}
+#top-head .topicon { /*アイコン*/
+  width: 4vw;
+  border-radius: 50%;
+  margin:30px 0;
+}
+#global-nav ul { /* SNSリスト */
+  display: flex; 
+  list-style: none;
+  font-size: 1vw;
+}
+#global-nav ul li {
+  margin: 30px 15px;
+}
+#global-nav ul li a {
+  padding: 0 10px; 
+  color: #444;
+}
+#mobile-nav {
+  display: none;
+}
+.mail_btn {
+  font-size: 1vw;
+  font-weight: normal;
+}
+/* Fixed */
+#top-head.fixed {/*スクロール時のヘッダーの位置*/
+  margin-top: 0;
+  top: 0;
+  position: fixed;
+}
+#top-head.fixed .logo { /*FITNESSのロゴ*/
+  font-size: 2.25vw;
+  color: #fff;
+  z-index: 1;
+}
+#top-head.fixed #global-nav ul li a {
+  color: #fff;
+}
+/* sns_btn */
+.fa-envelope:before {
+  color: #333;
+}
+
+/* masonry */
+#container {
+  width: 100%;
+  margin: 0 auto;   /* 中央寄せ */
+  position: relative;
+}
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 60px;
+}
+.item {
+  margin-top:15px;
+  margin-bottom: 15px;
+  width: 140px;
+  padding: 8px;
+  box-shadow: 8px 8px 10px #555555;
+  /* border: 1px solid #eee; */
+  /* background-color: pink; */
+  float: left; 
+}
+.item.x3 {
+  width: 400px;
+  opacity : 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+.item img {
+  width: 100%;
+}
+
+/* lightbox */
+#lightbox .lb-container { /*拡大時の枠太さ*/
+  padding: 3px;
+}
+
+/* footer */
+.footer section p{
+  color: #333;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+/* 上に戻るボタン*/
+#pagetop{
+  width: 70px; /*丸の大きさ*/
+  height: 70px;
+  position: fixed;
+  right: 25px; /*丸の位置*/
+  bottom: 100px;
+  background: #949494;/*ボタンの色*/
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#pagetop a{
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  text-align: center;
+}
+#pagetop a::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f106"; /*アイコン*/
+  font-weight: 700;
+  font-size: 40px; /*矢印の大きさ*/
+  color: #fff;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -50px; 
+  bottom: 10px;
+  right: 25px;
+  left: 15px;
+  margin: auto;
+}
+
+
+@media screen and (max-width: 1112px){ /*ipadpro 横*/
+  /* masonry */
+#container {
+  width: 100%;
+  margin: 0 auto;   /* 中央寄せ */
+  margin-left: 20px;
+  position: relative;
+}
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 60px;
+}
+.item {
+  margin-top:15px;
+  margin-bottom: 15px;
+  width: 140px;
+  padding: 8px;
+  box-shadow: 8px 8px 10px #555555;
+}
+
+.item.x3 {
+  width: 300px;
+  opacity : 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+.item img {
+  width: 100%;
+}
+ 
+/* 上に戻るボタン*/
+#pagetop{
+  width: 50px; /*丸の大きさ*/
+  height: 50px;
+  position: fixed;
+  right: 25px; /*丸の位置*/
+  bottom: 50px;
+  background: #949494;/*ボタンの色*/
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#pagetop a{
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  text-align: center;
+}
+#pagetop a::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f106"; /*アイコン*/
+  font-weight: 700;
+  font-size: 30px; /*矢印の大きさ*/
+  color: #fff;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -50px; 
+  bottom: 10px;
+  right: 27px;
+  left: 1px;
+  margin: auto;
+}
+@media screen and (max-width: 1024px){ /*ipad 横*/
+#container {
+  width: 100%;
+  margin: 0 auto;  
+  margin-left: 30px;
+  position: relative;
+}
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 60px;
+}
+.item {
+  margin-top:15px;
+  margin-bottom:15px;
+  width: 140px;
+  padding: 5px;
+  box-shadow: 8px 8px 10px #555555;
+}
+
+.item.x3 {
+  width: 280px;
+  opacity : 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+
+/* 上に戻るボタン*/
+#pagetop{
+  width: 50px; /*丸の大きさ*/
+  height: 50px;
+  position: fixed;
+  right: 25px; /*丸の位置*/
+  bottom: 50px;
+  background: #949494;/*ボタンの色*/
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#pagetop a{
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  text-align: center;
+}
+#pagetop a::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f106"; /*アイコン*/
+  font-weight: 700;
+  font-size: 30px; /*矢印の大きさ*/
+  color: #fff;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -50px; 
+  bottom: 10px;
+  right: 27px;
+  left: 1px;
+  margin: auto;
+}
+@media screen and (max-width: 896px){ /*iphone xs 横*/
+#container {
+  margin-left: 40px;
+  position: relative;
+}
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 60px;
+}
+.item.x3 {
+  width: 220px;
+}
+
+/* 上に戻るボタン*/
+#pagetop{
+  width: 50px; /*丸の大きさ*/
+  height: 50px;
+  position: fixed;
+  right: 25px; /*丸の位置*/
+  bottom: 50px;
+  background: #949494;/*ボタンの色*/
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#pagetop a{
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  text-align: center;
+}
+#pagetop a::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f106"; /*アイコン*/
+  font-weight: 700;
+  font-size: 30px; /*矢印の大きさ*/
+  color: #fff;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -50px; 
+  bottom: 10px;
+  right: 27px;
+  left: 1px;
+  margin: auto;
+}
+@media screen and (max-width: 834px){ /*ipadpro 縦*/
+  .inner { /** ヘッダー部全体 **/
+    display:block;
+    width: 100%;
+    height: 50px; /* ヘッダーの高さ */
+    position: absolute;
+    background-color:#f2f2f2; 
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+  }
+  .inner:after { 
+    content: ""; 
+    clear: both; 
+    display: inline-block; 
+   } 
+  
+  #top-head {
+    display:block;
+    width: 100%; 
+    position: fixed; /*上部固定*/
+    z-index:999;
+    margin: 0;
+    padding: 0;
+  }
+  #top-head .logo { /* 古塔つみ */
+    font-size: 2.5vw;
+    font-family: 'Noto Serif JP', serif;
+    letter-spacing:1em;
+    width: 200px;
+    height: 30px;
+    margin-top: 5px;
+    padding-left: 20px;
+    writing-mode: horizontal-tb; /* 横書きに変更 */
+  }
+  #mobile-head { /*ロゴとつみ*/
+    display: block;
+    width: 50%;  
+    margin: 10px;
+    padding: 0;
+  }
+  #top-head .topicon { /*アイコン*/
+    width: 4vw; 
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+  }
+  #global-nav {
+    display: flex;
+    width: 40%;
+    height: 20px;
+    margin: 20px 20px;
+    padding-left: 20px;
+    /* background-color: green; */
+  }
+  #global-nav ul { /* SNSリスト */
+    /* display: flex; flexじゃないと横並ばない */
+    list-style: none;
+    height: 20px;
+    font-size: 1.5vw;
+    font-weight: normal;
+    writing-mode: horizontal-tb; /* 横書きに変更 */
+    justify-content: space-evenly;
+  }
+  #global-nav ul li {
+    margin: 0;
+    padding: 0;
+  }
+  #global-nav ul li a{  /* snsリスト */
+    padding: 0 10px; 
+    color: #444; 
+    margin: 0;
+    padding: 0;
+  }
+  .mail_btn {
+    font-size: 1.5vw;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+   } 
+  
+  /* Fixed */
+  #top-head.fixed {/*スクロール時のヘッダーの位置*/
+    margin-top: 0;
+    top: 0;
+    position: fixed;
+  }
+  /* sns_btn email */
+  .fa-envelope:before {
+    color: #333;
+  }  
+  /* masonry */
+#container {
+  padding-top: 30px;
+  position: relative;
+  margin: 0 auto; 
+}
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 0px;
+}
+.item {
+  margin-top:1px;
+  margin-bottom: 15px;
+  padding: 10px; /* 白い縁の幅 */
+  box-shadow: 8px 8px 10px #555555;
+}
+
+.item.x3 {
+  width: 220px;
+}
+
+
+/* 上に戻るボタン*/
+#pagetop{
+  width: 50px; /*丸の大きさ*/
+  height: 50px;
+  position: fixed;
+  right: 25px; /*丸の位置*/
+  bottom: 50px;
+  background: #949494;/*ボタンの色*/
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#pagetop a{
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  text-align: center;
+}
+#pagetop a::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f106"; /*アイコン*/
+  font-weight: 700;
+  font-size: 30px; /*矢印の大きさ*/
+  color: #fff;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -50px; 
+  bottom: 10px;
+  right: 27px;
+  left: 1px;
+  margin: auto;
+}
+
+@media screen and (max-width:768px) {
+    /* masonry */
+#container {
+  width: 100%;
+  margin: 0 auto;   /* 中央寄せ */
+  position: relative;
+  /* background-color: tomato; */
+}
+.wrapper {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.item {
+  margin-top:15px;
+  margin-bottom: 15px;
+  width: 140px;
+  padding: 8px;
+  box-shadow: 8px 8px 10px #555555;
+  /* border: 1px solid #eee; */
+  /* background-color: pink; */ 
+}
+.item.x3 {
+  width: 300px;
+  opacity : 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+ 
+
+/* 上に戻るボタン*/
+#pagetop{
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  right: 10px;
+  bottom: 30px;
+  background: #949494;/*ボタンの色*/
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#pagetop a{
+  position: relative;
+  display: block;
+  width: 0px;
+  height: 0px;
+  text-decoration: none;
+  text-align: center;
+}
+#pagetop a::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f106"; /*アイコン*/
+  font-weight: 900;
+  font-size: 20px;
+  color: #fff;
+  position: absolute;
+  width: 15px;
+  height: 3px;
+  top: -12px;
+  bottom: -1px;
+  right:12px;
+  left: 9px;
+  margin: auto;
+}
+
+@media screen and (max-width: 667px) {
+#container {
+  margin: 0 auto;
+  margin-left: 90px;
+}
+.item {
+  margin-bottom: 5px;
+  padding: 8px;
+  box-shadow: 4px 4px 8px #555555;
+}
+.item.x3 {
+  width: 220px;
+}
+#pagetop{
+  width: 25px;
+  height: 25px;
+}
+#pagetop a::before{
+  right: 10px;
+  left: 6px;
+}
+@media screen and (max-width:414px) {
+ .inner { 
+    height: 35px; 
+    padding-left: 10px;
+  }
+  #top-head .logo { 
+    font-size: 1.5vw;
+    padding-left:7px;
+  }
+  #mobile-head { 
+    width: 35%; 
+    padding: 0;
+  }
+  #global-nav {
+    width: 55%;
+    margin-top: 15px;
+  }
+  #global-nav {
+    display: none;
+  }
+  #mobile-nav {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+  }
+  #mobile-nav i {
+    margin-right: 10px;
+    color: #000;
+    font-size: 1vw;
+  }
+  #container {
+   margin-left: 0;
+  }
+  .item.x3 {
+   width: 180px;
+   margin-top: 0;
+  }
+}
+@media screen and (max-width:375px) {
+  .inner { 
+    padding-left: 0px;
+  }
+  #top-head .logo { 
+    font-size: 1vw;
+    padding-left:7px;
+    margin-top: 3px;
+  }
+  #mobile-head { 
+    width: 35%; 
+  }
+  #global-nav {
+    width: 55%;
+    margin-top: 12px;
+  }
+  #container {
+    margin-left: 17px;
+  }
+  .item.x3 {
+    width: 145px;
+  }
+}
